@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chuyên đề sinh học 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#cfe3d7;
+color:#134d3a;
+}
+
+/* NAV */
+nav{
+background:#146c43;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+/* HEADER */
+header{
+margin-top:70px;
+background:linear-gradient(135deg,#1f7f57,#6bd19f);
+color:white;
+text-align:center;
+padding:80px 10%;
+}
+
+header h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+header p{
+opacity:0.9;
+}
+
+/* SECTION */
+.section{
+padding:60px 10%;
+}
+
+.section-title{
+font-size:26px;
+font-weight:700;
+margin-bottom:30px;
+border-bottom:3px solid #2e8b67;
+display:inline-block;
+padding-bottom:5px;
+}
+
+/* DISEASE */
+.disease{
+margin-bottom:60px;
+}
+
+.disease h3{
+font-size:22px;
+margin-bottom:15px;
+}
+
+.disease p{
+margin-bottom:6px;
+font-size:15px;
+}
+
+/* CHART */
+.chart{
+margin-top:20px;
+background:#dbe9e2;
+padding:15px;
+border-radius:12px;
+}
+
+.chart-title{
+margin-bottom:10px;
+font-size:14px;
+}
+
+.stat{
+display:flex;
+align-items:center;
+margin-bottom:10px;
+}
+
+.stat-name{
+width:120px;
+font-size:13px;
+}
+
+.bar-bg{
+flex:1;
+height:12px;
+background:#e7efeb;
+border-radius:20px;
+position:relative;
+}
+
+.bar-fill{
+height:100%;
+border-radius:20px;
+}
+
+.stat-value{
+width:60px;
+text-align:right;
+font-size:12px;
+margin-left:10px;
+}
+
+/* COLORS */
+.green{background:#1faa7a;}
+.red{background:#e74c3c;}
+.blue{background:#3b82f6;}
+.purple{background:#8b5cf6;}
+.orange{background:#f97316;}
+
+/* PREVENTION */
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.box{
+background:#dbe9e2;
+padding:20px;
+border-radius:12px;
+}
+
+.box h4{
+margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+background:#146c43;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:50px;
+font-size:13px;
+}
+
+@media(max-width:768px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+/* ================= ANIMATION LEFT → RIGHT ================= */
+/* ===== SLIDE FROM LEFT ===== */
+.fade-left{
+opacity:0;
+transform:translateX(-100px);
+transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-left.show{
+opacity:1;
+transform:translateX(0);
+}
+
+.fade-left.show{
+opacity:1;
+transform:translateX(0);
+}
+
+.delay-1{transition-delay:0.2s;}
+.delay-2{transition-delay:0.4s;}
+.delay-3{transition-delay:0.6s;}
+.delay-4{transition-delay:0.8s;}
+.delay-5{transition-delay:1s;}
+.delay-6{transition-delay:1s;}
+.delay-7{transition-delay:1s;}
+.delay-8{transition-delay:1s;}
+.delay-9{transition-delay:1s;}
+.delay-10{transition-delay:1s;}
+.delay-11{transition-delay:1s;}
+.delay-12{transition-delay:1s;}
+.delay-13{transition-delay:1s;}
+html{
+scroll-padding-top:100px;
+}
+/* ===== MODAL STYLE ===== */
+.modal{
+display:none;
+position:fixed;
+z-index:2000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:white;
+padding:30px;
+border-radius:15px;
+width:80%;
+max-width:600px;
+animation:popup 0.5s ease;
+}
+
+.close-btn{
+float:right;
+font-size:25px;
+cursor:pointer;
+color:#146c43;
+}
+
+@keyframes popup{
+from{
+opacity:0;
+transform:scale(0.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+function openModal(){
+const modal = document.getElementById("introModal");
+modal.style.display="flex";
+
+setTimeout(()=>{
+modal.classList.add("hide");
+setTimeout(()=>{
+modal.style.display="none";
+modal.classList.remove("hide");
+},400);
+},5000);
+}
+}
+.modal-content{
+background:#146c43;
+color:white;
+padding:30px;
+border-radius:15px;
+width:85%;
+max-width:500px;
+animation:popup 0.4s ease;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+.support-row{
+display:flex;
+gap:40px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.support-box{
+flex:1;
+min-width:280px;
+padding:10px 0;
+}
+.article-image{
+margin:30px 0;
+text-align:center;
+}
+
+.article-image img{
+width:100%;
+max-width:800px;
+height:auto;
+display:block;
+margin:0 auto;
+border-radius:8px; /* nếu không muốn bo góc thì xóa dòng này */
+}
+
+.article-image figcaption{
+font-size:14px;
+color:#777;
+margin-top:8px;
+font-style:italic;
+}
+.card{
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+border:1px solid rgba(255,255,255,0.2);
+padding:25px;
+transition:0.4s;
+}
+
+.card:hover{
+transform: translateY(-10px);
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+nav{
+backdrop-filter: blur(10px);
+background: rgba(0,0,0,0.4);
+position:fixed;
+width:100%;
+z-index:1000;
+}
+body{
+font-family:'Poppins', sans-serif;
+}
+body{
+font-family:'Poppins',sans-serif;
+margin:0;
+background:#f5f7fb;
+color:#333;
+scroll-behavior:smooth;
+}
+.hero{
+min-height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+background: linear-gradient(135deg,#4f46e5,#06b6d4);
+background-size:200% 200%;
+animation: gradientMove 10s ease infinite;
+padding:40px 20px;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.hero h1{
+font-size:40px;
+font-weight:700;
+}
+
+.hero p{
+font-size:18px;
+opacity:0.9;
+}
+.card{
+background:white;
+padding:30px;
+margin:20px 0;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
+}
+@media(max-width:768px){
+nav{
+padding:15px 20px;
+}
+.hero h1{
+font-size:28px;
+}
+}
+.intro-screen{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#ffffff,#e8f5e9);
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:9999;
+}
+
+.intro-content h1{
+    font-size:42px;
+    color:#2e7d32;
+}
+
+.intro-content h2{
+    font-size:48px;
+    color:#1b5e20;
+    margin-top:10px;
+}
+
+.intro-content p{
+    margin-top:15px;
+    font-size:18px;
+    color:#388e3c;
+}
+
+/* Animation trái sang phải */
+.reveal{
+    opacity:0;
+    transform:translateX(-60px);
+    animation:slideRight 1s forwards;
+}
+
+.reveal:nth-child(1){animation-delay:0.3s;}
+.reveal:nth-child(2){animation-delay:0.7s;}
+.reveal:nth-child(3){animation-delay:1.1s;}
+
+@keyframes slideRight{
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+.marquee-box{
+    margin-top:40px;
+    width:420px;
+    height:50px;
+    border:2px solid #2e7d32;
+    border-radius:30px;
+    background:rgba(46,125,50,0.08);
+    box-shadow:0 0 15px rgba(46,125,50,0.3);
+    display:flex;
+    align-items:center;
+    padding-left:20px;
+    overflow:hidden;
+}
+
+.marquee-text{
+    color:#1b5e20;
+    font-weight:600;
+    font-size:16px;
+    white-space:nowrap;
+}
+
+/* Con trỏ nhấp nháy */
+.cursor{
+    margin-left:5px;
+    animation:blink 0.8s infinite;
+}
+
+@keyframes blink{
+    0%{opacity:1;}
+    50%{opacity:0;}
+    100%{opacity:1;}
+}
+.marquee-text{
+    color:#1b5e20;
+    font-weight:600;
+    font-size:17px;
+    white-space:nowrap;
+    line-height:1;
+    display:flex;
+    align-items:center;
+}
+.marquee-box{
+    margin:40px auto;            /* căn giữa */
+    width:450px;                 /* rộng đều */
+    height:55px;                 /* cao vừa đủ */
+    
+    border:2px solid #2e7d32;
+    border-radius:40px;          /* bo tròn đều */
+
+    background:rgba(46,125,50,0.08);
+    box-shadow:0 8px 25px rgba(46,125,50,0.2);
+
+    display:flex;
+    align-items:center;          /* căn giữa theo chiều dọc */
+    justify-content:center;      /* căn giữa theo chiều ngang */
+
+    padding:0 25px;              /* đều 2 bên */
+    overflow:hidden;
+}
+/* Trạng thái ban đầu */
+.scroll-reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+/* Khi xuất hiện */
+.scroll-reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+#intro-screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+
+    background:linear-gradient(135deg,#e8f5e9,#c8e6c9);
+    color:#1b5e20;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    z-index:9999;
+
+    transition:opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#intro-screen h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+#intro-screen p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+#intro-screen small{
+    opacity:0.7;
+    font-style:italic;
+}
+
+/* Khi ẩn */
+#intro-screen.hide{
+    opacity:0;
+    visibility:hidden;
+}
+</style>
+</head>
+<!-- POPUP NHÓM -->
+<div id="introModal" class="modal">
+  <div class="modal-content">
+    <h3>Thông tin nhóm thực hiện</h3>
+
+    <p><strong>Nhóm:</strong>6 </p>
+    <p> <strong>Thành viên:</strong> </p> 
+    <p>Nguyễn Thành Khôn </p> 
+    <p>Nguyễn Đức Duy </p>
+    <p>Huỳnh Trần Trà My </p>
+    <p>Nguyễn Thị Bảo Ngọc </p>
+    <p>Trần Thị Hân Hân</p>
+    <p>Trương Thị Bích Ngân </p>
+    <p>Liêu Ngọc Trung </p>
+    <p><strong>Lớp:</strong> 11A14</p>
+    <p><strong>Trường:</strong> THPT Tiểu Cần (phân hiệu Tập Ngãi)</p>
+
+    <hr style="margin:15px 0; opacity:0.3;">
+
+    <p><strong>Mục đích:</strong></p>
+    <p>- Xây dựng cơ sở dữ liệu dịch bệnh</p>
+    <p>- Nâng cao nhận thức cộng đồng</p>
+    <p>- Tuyên truyền bảo vệ sức khỏe</p>
+
+    <hr style="margin:15px 0; opacity:0.3;">
+
+    <p> <strong>Lời cảm ơn:</strong> </p>
+    <p>Trên đây là phần trình bày của em. Em xin chân thành cảm ơn thầy và các bạn đã dành thời gian ra đọc và xem. Rất mong nhận được những ý kiến đóng góp để bài làm của chúng em được hoàn thiện hơn. Em xin cảm ơn.</p>
+  </div>
+</div>
+<body>
+  
+  <section id="intro-screen" class="intro-screen">
+    <div class="intro-content">
+        <h1 class="reveal">Welcome To My Website</h1>
+        <h2 class="reveal">🦠Chuyên đề sinh học 11</h2>
+        <p class="reveal">Đề tài 5</p>
+       <div class="marquee-box">
+    <div class="marquee-text">
+        <span id="typingText"></span>
+        <span class="cursor">|</span>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+</section>
+<nav>
+<h2>Chuyên đề sinh học 11</h2>
+<ul>
+<li><a href="javascript:void(0);" onclick="toggleModal()">Giới thiệu</a></li>
+<li><a href="#trangchu">Trang chủ</a></li>
+<li><a href="#dichbenh">Dịch bệnh</a></li>
+<li><a href="#phongchong">Phòng chống</a></li>
+<li><a href="#footer">Hỗ trợ</a>
+</ul>
+</nav>
+<div id="main-content" style="display:none;">
+<header>
+  
+<h1>Đề tài: Xây dựng cơ sở dữ liệu để tra cứu thông tin liên quan đến một số dịch bệnh phổ biến ở Việt Nam</h1>
+<p>Số liệu và cách tuyên truyền phòng chống tại Việt Nam năm 2026</p>
+</header>
+</div>
+<section class="section fade-left" id="trangchu">
+<div class="section-title">Trang chủ</div>
+
+<button onclick="toggleModal()" style=" padding:10px 20px; background:#146c43; color:white; border:none; border-radius:8px; cursor:pointer; margin-bottom:20px;"> Xem thông tin nhóm thực hiện 
+
+</button>
+<div class="box fade-left delay-4">
+<h4>Giới thiệu đề tài</h4>
+<p>Website cung cấp thông tin về các dịch bệnh phổ biến tại Việt Nam năm 2026, số liệu thống kê và biện pháp phòng chống.</p>
+</div>
+
+<div class="box fade-left delay-5" style="margin-top:20px;">
+<h4>Mục tiêu</h4>
+<p>- Tra cứu nhanh chóng.</p>
+<p>- Cung cấp số liệu trực quan.</p>
+<p>- Hướng dẫn phòng tránh hiệu quả.</p>
+</div>
+</section>
+<section class="section fade-left" id="dichbenh">
+<div class="section-title" style="font-size: 40px;"> Dịch bệnh thường gặp </div>
+<!-- I -->
+
+<div class="disease fade-left delay-8">
+<h3 style="font-size: 35px;">I. Cúm (Influenza)</h3>
+<p > <strong>a)Khái niệm:</strong> Bệnh Cúm (Influenza) là một bệnh nhiễm trùng đường hô hấp cấp tính do các virus cúm gây ra. Khác với cảm lạnh thông thường (Common Cold) vốn nhẹ nhàng hơn, cúm có khả năng gây ra các biến chứng nặng, dẫn đến nhập viện hoặc thậm chí tử vong, đặc biệt là ở nhóm đối tượng nguy cơ cao.</p>
+<p> <strong>b. Tác nhân:</strong> Tác nhân chính là các virus thuộc họ Orthomyxoviridae, được chia làm 4 loại chính:
+  <p >* Cúm A: Loại nguy hiểm nhất, có khả năng gây đại dịch. Chúng lưu hành ở cả người và nhiều loài động vật (chim hoang dã, gia cầm, lợn...).</p>
+
+<p >* Cúm B: Chủ yếu chỉ gây bệnh trên người và thường gây ra các đợt dịch theo mùa.</p>
+<p >* Cúm C: Gây bệnh nhẹ, ít khi gây dịch.</p>
+
+<p >* Cúm D: Chủ yếu ảnh hưởng đến gia súc, chưa thấy gây bệnh trên người.</p>
+
+<p ><strong>> Điểm đặc biệt:</strong> Virus cúm A được phân loại dựa trên hai protein trên bề mặt là Hemagglutinin (H) và Neuraminidase (N). Ví dụ: H1N1, H5N1.</p>
+<p ><strong>c. Phương thức truyền bệnh:</strong> Virus cúm cực kỳ "nhạy bén" trong việc phát tán thông qua 2 con đường chính:
+<p >*Trực tiếp (Giọt bắn): Khi người bệnh ho, hắt hơi hoặc nói chuyện, các giọt bắn chứa virus văng ra không trung và người lành hít phải.</p>
+<p >*Gián tiếp (Tiếp xúc): Virus dính vào bề mặt đồ vật (tay nắm cửa, điện thoại, khăn tay). Người lành chạm tay vào các bề mặt này rồi đưa lên mắt, mũi, miệng.</p>
+<p ><strong>d. Cơ chế gây bệnh:</strong> Đây là lúc virus bắt đầu "chiếm hữu" cơ thể . Quy trình diễn ra như sau:</p>
+<p >Xâm nhập: Protein H (Hemagglutinin) trên vỏ virus đóng vai trò như một chiếc chìa khóa, bám chặt vào thụ thể trên bề mặt tế bào niêm mạc đường hô hấp.</p>
+<p >Nhân bản: Virus xâm nhập vào bên trong tế bào, giải phóng vật chất di truyền (RNA) vào nhân tế bào chủ. Tại đây, nó bắt máy móc của tế bào "sản xuất" ra hàng triệu bản sao virus mới.</p>
+<p >Giải phóng: Protein N (Neuraminidase) giúp các virus mới cắt đứt liên kết với tế bào cũ để thoát ra ngoài, tiếp tục đi xâm chiếm các tế bào lân cận.</p>
+<p >Phản ứng viêm: Quá trình này phá hủy các tế bào biểu mô đường hô hấp, kích hoạt hệ thống miễn dịch giải phóng các cytokine. Chính sự "phản kháng" này của cơ thể gây ra các triệu chứng như sốt, đau mình mẩy và mệt mỏi.</p>
+<p ><strong>e. Thực trạng và đối tượng mắc bệnh:</strong></p>
+<p> *Số ca mắc bệnh viêm đường hô hấp cấp ở nước ta có xu hướng tăng. Cả nước đã ghi nhận 3 ca tử vong do cúm trong năm 2025. Các chủng virus cúm lưu hành chủ yếu tại Việt Nam hiện nay là cúm A(H1N1), A/H3N2 và cúm B, chưa ghi nhận thay đổi về độc lực của virus.</p>
+<p>* Đối tượng dễ mắc (Tần suất cao)
+<p>- Trẻ em (dưới 5 tuổi): Hệ miễn dịch chưa hoàn thiện, môi trường học đường dễ lây lan.</p>
+<p>- Người làm việc trong môi trường đông người: Nhân viên y tế, giáo viên, công nhân khu công nghiệp.</p>
+<p ><strong>f. Triệu chứng:</strong>  Sốt cao ( 38 - 40° ), đau nhức cơ bắp, mệt mỏi kiệt quệ, ho khan dai dẳng, đau đầu, đau họng và sổ mũi/nghẹt mũi. Bệnh thường kéo dài 4-7 ngày. So với cảm lạnh, cúm nghiêm trọng hơn và có thể gây biến chứng nặng, đặc biệt ở trẻ nhỏ và người già. </p>
+
+<figure class="article-image">
+  <img src=https://moh.gov.vn/documents/2603717/2893812/so+ca+mac+cum+tang.jpg/3e867cee-1ad7-4278-8e0f-1f2d82a0d73e?t=1763535827397 alt="Ghép tim phổi">
+  <figcaption>
+    Số ca mắc cúm tăng, Bộ Y tế chưa ghi nhận thay đổi về độc lực của virus - Ảnh: VGP
+  </figcaption>
+</figure>
+
+<div class="chart">
+<div class="chart-title">Số liệu thống kê năm 2025</div>
+
+<div class="stat">
+<div class="stat-name">Ca mắc</div>
+<div class="bar-bg"><div class="bar-fill green" data-width="90%"></div> <p> </p></div>
+<div class="stat-value">132000</div>
+</div>
+
+<div class="stat">
+<div class="stat-name">Tử Vong</div>
+<div class="bar-bg"><div class="bar-fill green" style="width:5%"></div> <p> </p> </div>
+<div class="stat-value">3</div>
+</div>
+
+<div class="stat">
+<div class="stat-name"> Ca mắc/tháng</div>
+<div class="bar-bg"><div class="bar-fill green" style="width:20%"></div> </div>
+<div class="stat-value"> 8000 - 11000 </div>
+</div>
+
+</div>
+</div>
+
+<!-- II -->
+<div class="disease fade-left delay-1">
+<h3 style="font-size: 35px;">II. Sốt xuất huyết</h3>
+<p><strong>a. Khái niệm:</strong> Sốt xuất huyết là bệnh truyền nhiễm do vi-rút gây ra, lây truyền qua muỗi, có thể gây biến chứng nguy hiểm nếu không điều trị kịp thời.</p>
+<p><strong>b. Tác nhân:</strong> Tác nhân trực tiếp gây bệnh là virus Dengue, thuộc chi Flavivirus, họ Flaviviridae.</p>
+<p><strong>c. Phương thức truyền bệnh:</strong> Do muỗi vằn đốt người bệnh rồi truyền sang người lành.</p>
+<p>Bệnh không lây trực tiếp từ người sang người.</p>
+<p><strong>d. Cơ chế gây bệnh:</strong> Được chia làm 3 giai đoạn</p>
+<p> <strong>Giai đoạn 1 (1 - 3 ngày):</strong> Xâm nhập và Thiết lập nhiễm trùng </p>
+<p> - Sự xâm nhập: Khi muỗi vằn (Aedes aegypti) mang virus đốt người, nó bơm nước bọt chứa virus Dengue vào lớp hạ bì của da.</p>
+<p> - Tấn công hàng rào miễn dịch: Virus lập tức tấn công các tế bào trình diện kháng nguyên (tế bào Dendritic) và các đại thực bào tại chỗ. Thay vì tiêu diệt virus, các tế bào này vô tình trở thành "nhà máy" cho virus nhân bản.</p>
+<p> - Lan tỏa: Sau khi nhân bản số lượng lớn, virus theo hệ bạch huyết đổ vào máu, gây ra tình trạng nhiễm virus máu. Đây là lúc bệnh nhân bắt đầu sốt cao đột ngột.</p>
+<p> <strong>Giai đoạn 2 (3 - 7 ngày):</strong> Phản ứng miễn dịch hệ thống và "Cơn bão Cytokine"</p>
+<p> - Kích hoạt diện rộng: Virus trong máu đi khắp cơ thể, tấn công các cơ quan như gan, lách và tủy xương. Hệ miễn dịch nhận diện sự xâm nhập và phản ứng bằng cách giải phóng ồ ạt các chất trung gian hóa học gọi là Cytokine.</p>
+<p> - Phản ứng ngược: Trong các trường hợp nặng (thường là nhiễm lần thứ 2 với chủng khác), cơ thể xảy ra hiện tượng "Tăng cường phụ thuộc kháng thể" (ADE). Kháng thể cũ không trung hòa được virus mới mà còn giúp chúng xâm nhập vào tế bào miễn dịch nhanh hơn, làm bùng nổ một cuộc khủng hoảng Cytokine, dẫn đến tổn thương thành mạch.</p>
+<p> <strong>Giai đoạn 3 (7+ ngày):</strong> Tái hấp thu dịch </p>
+<p> - Tái hấp thu: Dịch đã thoát ra các khoang gian bào (màng phổi, màng bụng) bắt đầu được hấp thu ngược trở lại lòng mạch máu. Đây là lúc cần ngưng truyền dịch để tránh quá tải tuần hoàn hoặc phù phổi cấp.</p>
+<p> - Hồi phục tế bào: Tủy xương bắt đầu hoạt động mạnh trở lại. Số lượng bạch cầu tăng lên trước, sau đó là sự gia tăng nhanh chóng của số lượng tiểu cầu.</p>
+<p> - Ổn định thành mạch: Các tế bào nội mô mạch máu gắn kết trở lại, tính thấm thành mạch trở về trạng thái bình thường.</p>
+<p> - Biểu hiện: Bệnh nhân hết sốt, ăn ngon miệng hơn, tiểu nhiều và có thể xuất hiện các ban hồi phục (ngứa trên da).</p>
+<p><strong>e. Thực trạng và đối tượng mắc bệnh:</strong> Ghi nhận nhiều ca sốt xuất huyết nặng
+Điều này tạo áp lực lên hệ thống y tế khu vực và đặt ra yêu cầu cảnh giác cao độ đối với toàn bộ người dân trước tâm lý chủ quan cho rằng sốt xuất huyết là bệnh quen thuộc và không đáng lo ngại.</p> 
+<p>Tại TP Cần Thơ (mới), tích lũy từ đầu năm đến ngày 22/10, đã ghi nhận 3.472 ca mắc sốt xuất huyết. Đồng Tháp và Vĩnh Long cũng ghi nhận số ca mắc tăng hơn 80-130% so với năm trước, nhiều tuần vượt ngưỡng cảnh báo dịch. </p>
+<p><strong>>Đối tượng</strong></p>
+<p> - Trẻ em và người lớn đều có thể mắc.</p>
+<p> - Người sống ở khu vực đông dân cư, vệ sinh kém.</p>
+<p><strong>e. Triệu chứng:</strong> </p>
+<p> - Sốt cao đột ngột (39–40°C).</p>
+
+<p> - Đau đầu, đau hốc mắt.</p>
+
+<p> - Đau cơ, đau khớp.</p>
+
+<p> - Buồn nôn, chán ăn.</p>
+
+<p> - Có thể xuất hiện chảy máu cam, chảy máu chân răng, nổi chấm đỏ trên da.
+</p>
+<figure class="article-image">
+  <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2025/10/20/z7134807818411a56b8cdbf422465790a6c931ac487770-1760923161514703612038.jpg" alt="Sốt xuất huyết">
+  <figcaption>
+    Bệnh sốt xuất huyết có thể gây nặng ở bất kỳ ai - Ảnh: VGP/HM
+  </figcaption>
+</figure>
+<div class="chart">
+<div class="chart-title">Số liệu thống kê năm 2025</div>
+
+<div class="stat">
+<div class="stat-name">Ca mắc</div>
+<div class="bar-bg"><div class="bar-fill red" style="width:95%"></div></div>
+<div class="stat-value">65000</div>
+</div>
+
+<div class="stat">
+<div class="stat-name">Tử Vong</div>
+<div class="bar-bg"><div class="bar-fill orange" style="width:5%"></div></div>
+<div class="stat-value">11</div>
+</div>
+
+<div class="stat">
+<div class="stat-name">Ca mắc/tháng</div>
+<div class="bar-bg"><div class="bar-fill red" style="width:30%"></div></div>
+<div class="stat-value">21600</div>
+</div>
+
+</div>
+</div>
+
+<!-- III -->
+<div class="disease fade-left delay-1">
+<h3 style="font-size: 35px;">III. Tả (Cholera)</h3>
+<p><strong>a. Khái niệm:</strong> Bệnh dịch tả là bệnh truyền nhiễm cấp tính, gây tiêu chảy dữ dội, có thể dẫn đến mất nước nặng và tử vong nếu không được điều trị kịp thời.</p>
+<p><strong>b. Tác nhân:</strong> Bệnh do vi khuẩn Vibrio cholerae gây ra, thường tồn tại trong nguồn nước bẩn và thực phẩm nhiễm khuẩn.</p>
+<p><strong>c. Phương thức truyền bệnh:</strong></p> 
+<p> - Qua đường tiêu hóa.</p>
+<p> - Do ăn uống thực phẩm, nước uống bị nhiễm vi khuẩn.</p>
+<p> - Do vệ sinh cá nhân kém, rửa tay không sạch.</p>
+<p><strong>d. Cơ chế gây bệnh:</strong> Bệnh tả đựợc chia làm 4 giai đoạn và nối tiếp như sau
+ </p>
+ <p> - Giai đoạn 1: Xâm nhập và Vượt rào
+Vi khuẩn theo thức ăn, nước uống vào dạ dày. Một số bị tiêu diệt bởi axit dịch vị, số còn lại sống sót sẽ di chuyển xuống ruột non.</p>
+<p> - Giai đoạn 2: Cư trú và Nhân bản
+Tại ruột non, vi khuẩn sử dụng lông chuyển (đuôi) để bơi qua lớp màng nhầy và bám chặt vào tế bào niêm mạc ruột. Tại đây, chúng nhân lên nhanh chóng về số lượng.</p>
+<p> - Giai đoạn 3: Tiết độc tố (Cholera Toxin)
+Vi khuẩn không phá hủy tế bào mà tiết ra độc tố tả. Độc tố này bám vào bề mặt tế bào ruột, "mở khóa" và đưa một phần độc tố vào bên trong tế bào.</p>
+<p> - Giai đoạn 4: Rối loạn bài tiết (Gây tiêu chảy)
+Độc tố làm tăng nồng độ chất truyền tin nội bào (cAMP), khiến tế bào ruột ngừng hấp thụ muối và nước từ lòng ruột vào máu.
+Đẩy ngược ồ ạt ion (Cl^-, Na^+, K^+) và nước từ trong tế bào ra lòng ruột.</p>
+<p> <strong> >Cuối cùng:</strong> Gây tiêu chảy cấp tính dữ dội, dẫn đến mất nước và sốc trụy mạch nhanh chóng.</p>
+<p><strong>d. Thực trạng và đối tượng mắc bệnh:</strong> Mặc dù Việt Nam chưa ghi nhận ca mắc bệnh tả, nhưng trước diễn biến phức tạp của dịch tả trên thế giới, Cục Phòng bệnh khuyến cáo người dân không nên chủ quan và đề nghị các địa phương tích cực, chủ động giám sát dịch bệnh từ sớm.</p>
+<p> <strong> >Đối tượng dễ mắc bệnh:</strong> </p>
+<p> - Trẻ em.</p>
+<p> - Người già.</p>
+<p> - Người có sức đề kháng yếu.</p>
+<p> - Người sống ở nơi thiếu vệ sinh.</p>
+<p><strong>e. Triệu chứng:</strong> 
+<p> + Tiêu chảy nhiều lần, phân lỏng như nước vo gạo.</p>
+<p> + Nôn ói.</p>
+<p> + Khát nước dữ dội.</p>
+<p> + Mệt mỏi, hoa mắt, chuột rút.</p>
+<p> + Da khô, mắt trũng (do mất nước).</p>
+
+<figure class="article-image">
+  <img src="http://www.benhvienbaichay.vn/uploads/news/68be2ddaf0f85/38acf369-5ba0-4843-ba95-7a1143ea670e.png" alt="Bệnh tả">
+  <figcaption>
+    Tác nhân và Triệu chứng lâm sàng của bệnh Tả 
+  </figcaption>
+</figure>
+
+</div>
+
+<!-- IV -->
+<div class="disease fade-left delay-1">
+<h3 style="font-size: 35px;">IV. HIV/AIDS</h3>
+<p><strong>a. Khái niệm:</strong> AIDS là giai đoạn cuối của bệnh nhiễm HIV, làm suy giảm nghiêm trọng hệ miễn dịch, khiến cơ thể dễ mắc nhiều bệnh nguy hiểm.</p>
+<p><strong>b. Tác nhân:</strong> Bệnh do vi-rút HIV gây ra. Vi-rút này tấn công trực tiếp vào hệ miễn dịch của con người.
+</p>
+<p><strong>c. Phương thức truyền bệnh:</strong></p>
+<p> - Đường máu (dùng chung kim tiêm, truyền máu nhiễm HIV).</p>
+
+<p> - Quan hệ tình dục không an toàn.</p>
+
+<p> - Từ mẹ sang con trong thai kỳ, khi sinh hoặc khi cho con bú.</p>
+
+ <p> <strong>>></strong>HIV không lây qua ăn uống chung, bắt tay, ôm, muỗi đốt.</p>
+<p><strong>d. Cơ chế gây bệnh:</strong> HIV được chia làm 3 giai đoạn:</p>
+ <p><strong>Giai đoạn 1:</strong> Nhiễm trùng cấp tính (nhiễm trùng tiên phát):</p>
+<p> - Ở giai đoạn cấp tính, HIV nhân lên nhanh chóng và lan rộng khắp cơ thể, tấn công và phá hủy các tế bào CD4 ( tế bào lympho T CD4 ) chống nhiễm trùng của hệ miễn dịch. Trong giai đoạn này, nồng độ HIV trong máu rất cao, làm tăng đáng kể nguy cơ  lây truyền HIV . </p>
+<p><strong>Giai đoạn 2:</strong> Mãn tính</p>
+<p> - Giai đoạn thứ hai của nhiễm HIV là nhiễm HIV mãn tính (còn gọi là nhiễm HIV không triệu chứng hoặc giai đoạn tiềm ẩn lâm sàng). Trong giai đoạn này, HIV tiếp tục nhân lên trong cơ thể nhưng ở mức độ rất thấp. Người nhiễm HIV mạn tính có thể không có bất kỳ triệu chứng nào liên quan đến HIV. Nếu không điều trị bằng thuốc kháng retrovirus (ART), nhiễm HIV mạn tính thường tiến triển thành AIDS trong vòng 10 năm hoặc lâu hơn, mặc dù ở một số người, quá trình này có thể diễn ra nhanh hơn. Những người đang điều trị bằng ART có thể ở giai đoạn này trong vài thập kỷ.</p>
+<p><strong>Giai đoạn 3:</strong> AIDS</p>
+<p> - AIDS là giai đoạn cuối cùng và nghiêm trọng nhất của nhiễm HIV, gây tổn hại nghiêm trọng đến hệ miễn dịch. Kết quả là, cơ thể không thể chống lại  các bệnh nhiễm trùng cơ hội , còn được gọi là các bệnh xác định AIDS . Người nhiễm HIV được chẩn đoán mắc AIDS nếu  số lượng tế bào CD4 dưới 200 tế bào/mm³ hoặc nếu họ mắc một số bệnh nhiễm trùng cơ hội nhất định. Khi HIV tiến triển đến giai đoạn AIDS, người bệnh có thể có tải lượng virus  cao và dễ dàng lây truyền HIV cho người khác. Nếu không được điều trị, người mắc AIDS thường chỉ sống được khoảng 3 năm.</p>
+<p><strong>e. Thực trạng và đối tượng mắc bệnh:</strong></p>
+<p>Đến hết năm 2024, cả nước ghi nhận 245.762 người nhiễm HIV còn sống và 116.004 người nhiễm HIV tử vong lũy tích. Dịch HIV diễn biến phức tạp tại phía nam, với hơn 40% số ca nhiễm mới là nhóm người MSM. Công tác phòng, chống HIV/AIDS vẫn còn lỗ hổng lớn khi số người nhiễm mới vẫn cao, tỷ lệ biết tình trạng chưa đạt mục tiêu, nhiều hạn chế trong tiếp cận nhóm nguy cơ cao.</p>
+<p><strong>>Đối tượng:</strong><p> - Người sử dụng chung các vật dụng đâm trực tiếp vào cơ thể như tiêm chích ma túy, xăm trổ hoặc những người sử dụng chung vật dụng hoặc tiếp xúc trực tiếp với người bị nhiễm HIV</p>
+<p> - Người quan hệ tình dục bừa bãi, quan hệ tình dục với nhiều người, tệ nạn mại dâm,…</p>
+<p> - Trẻ có mẹ bị nhiễm HIV trước và trong thời gian mang thai và cho con bú</p>
+
+
+<p><strong>f. Triệu chứng:</strong></p><p>Giai đoạn nhiễm trùng cấp tính: Xuất hiện sau 2-4 tuần phơi nhiễm. Người bệnh thường có triệu chứng giống cúm như sốt, mệt mỏi, đau cơ khớp, sưng hạch và phát ban hồng không ngứa.</p> 
+<p>Giai đoạn mãn tính: Giai đoạn này kéo dài từ 5-10 năm, người bệnh hoàn toàn không có triệu chứng rõ rệt và trông khỏe mạnh nhưng vẫn có khả năng lây truyền virus.</p>
+<p>Giai đoạn AIDS: Triệu chứng đặc trưng là sụt cân nhanh, tiêu chảy kéo dài, nấm miệng (tưa lưỡi) và các nhiễm trùng cơ hội nặng như lao, viêm phổi, hoặc ung thư da (Sarcoma Kaposi).</p>
+<figure class="article-image">
+  <img src="https://cdn.nhandan.vn/images/f2f4d490858c3777c091f116d7070de3b3f42beb2947808ec3859949df3bbcaba8e51c555f1f27b1052e384bb33ebe79d2f712945a8cf2cf02774721c884cc4a75e4f47e4b8746cf2c9b3f74ff24121ba8c92438c9d8098aaab14db1c39634d4/z7217517834881-e599f2d2843e7953c7fdff1dd0230234-2839.jpg"  alt="HIV/AIDS">
+  <figcaption>
+    Những tờ rơi về tư vấn dùng PrEP là những vật dụng quen thuộc trong hành trình tư vấn cho đối tượng nguy cơ trong nhóm MSM.
+  </figcaption>
+</figure>
+<div class="chart">
+<div class="chart-title">Số liệu thống kê 2024</div>
+
+<div class="stat">
+<div class="stat-name">Người biết tình trạng nhiễm HIV</div>
+<div class="bar-bg"><div class="bar-fill purple" style="width:87%"></div></div>
+<div class="stat-value">87%</div>
+</div>
+
+<div class="stat">
+<div class="stat-name">Người biết tình trạng nhiễm HIV được điều trị ARV</div>
+<div class="bar-bg"><div class="bar-fill purple" style="width:79%"></div></div>
+<div class="stat-value">79%</div>
+</div>
+
+<div class="stat">
+<div class="stat-name">Người được điều trị ARV có tải lượng virus dưới ngưỡng ức chế</div>
+<div class="bar-bg"><div class="bar-fill purple" style="width:96%"></div></div>
+<div class="stat-value">96%</div>
+</div>
+</div>
+</div>
+
+</section>
+
+<section class="section fade-left" id="phongchong">
+<div class="section-title">Tuyên truyền & Phòng chống dịch</div>
+
+<div class="grid">
+<div class="box fade-left delay-6">
+<h4>Tuyên truyền phòng chống bệnh cúm</h4>
+<p>* Mục tiêu của tuyên truyền là giúp mọi người hiểu – phòng – tránh – xử lý đúng cách khi có dịch cúm, hạn chế lây lan trong cộng đồng.Nội dung tuyên truyền gồm:</p>
+<p> - Hiểu nguyên nhân và đường lây truyền của bệnh cúm</p>
+<p> - Che miệng khi ho, hắt hơi</p><p> - Đeo khẩu trang nơi đông người</p><p> - Rửa tay bằng xà phòng thường xuyên</p><p> - Giữ ấm cơ thể khi trời lạnh</p><p> - Tiêm vắc-xin phòng cúm</p><p> - Phát hiện sớm và điều trị kịp thời</p>
+<p> - Biện pháp phòng chống bệnh cúm</p>
+<p><strong>a) Phòng bệnh cá nhân</strong></p>
+<p> - Hạn chế tụ tập đông người khi có dịch bùng phát</p><p> - Đeo khẩu trang khi ra ngoài hoặc tiếp xúc người bệnh</p><p> - Rửa tay bằng xà phòng trước khi ăn và sau khi ho, hắt hơi</p><p> - Không dùng chung đồ cá nhân</p><p>Ăn uống đủ chất, tăng sức đề kháng</p><p> - Nghỉ ngơi khi có dấu hiệu sốt, ho, đau họng</p><p> - Tiêm vắc-xin cúm định kỳ</p><p></p><p><strong>b) Phòng bệnh trong gia đình</strong></p><p> - Giữ nhà cửa thông thoáng, sạch sẽ</p><p> - Vệ sinh bề mặt, tay nắm cửa thường xuyên</p><p> - Vệ sinh bề mặt, tay nắm cửa thường xuyên</p><p> - Nhắc nhở các thành viên thực hiện phòng bệnh</p><p><strong>c) Phòng bệnh trong cộng đồng</strong></p><p> - Tuyên truyền nâng cao ý thức phòng bệnh</p><p> - Theo dõi, phát hiện sớm ổ dịch</p><p> - Tổ chức tiêm vắc-xin phòng cúm</p>
+</div>
+
+<div class="box fade-left delay-7">
+<h4>Tuyên truyền phòng chống AIDS</h4>
+<p>* Mục đích của tuyên truyền là giúp mọi người hiểu đúng về HIV/AIDS, không kỳ thị người bệnh và chủ động phòng tránh.Nội dung tuyên truyền gồm:</p>
+<p> - Hiểu rõ đường lây truyền HIV</p>
+<p> - Không phân biệt, xa lánh người nhiễm HIV</p>
+<p> - Sống lành mạnh, có trách nhiệm</p>
+<p> - Thường xuyên xét nghiệm HIV khi cần thiết</p>
+<p> - Tuân thủ điều trị nếu nhiễm HIV</p>
+<p> *Biện pháp phòng chống AIDS:</p>
+<p><strong>a) Đối với cá nhân</strong></p> 
+<p> - Không dùng chung kim tiêm, vật sắc nhọn</p>
+<p> - Quan hệ tình dục an toàn, có trách nhiệm</p> <p> - Không dùng chung bàn chải, dao cạo râu</p><p></p><p> - Đi xét nghiệm HIV khi có nguy cơ</p><p></p><p><strong>b) Trong gia đình</strong></p><p> - Xử lý vết thương đúng cách, tránh tiếp xúc máu trực tiếp</p>
+<p> - Chăm sóc, động viên người nhiễm HIV
+Không kỳ thị, xa lánh</p>
+<p><strong>c) Trong cộng đồng</strong></p>
+<p> - Kiểm soát an toàn truyền máu</p>
+<p> - Tư vấn, xét nghiệm tự nguyện</p>
+<p> - Hỗ trợ người nhiễm HIV điều trị bằng thuốc ARV</p>
+<p> - Phòng chống kỳ thị, phân biệt đối xử</p>
+
+</div>
+
+<div class="box fade-left delay-8">
+<h4>Tuyên truyền phòng chống dịch tả</h4>
+<p>Mục tiêu của tuyên truyền là giúp mọi người hiểu – phòng – tránh – xử lý đúng cách khi có dịch.
+Nội dung tuyên truyền gồm:</p>
+<p> - Dùng nước sạch</p>
+<p> - Ăn chín, uống sôi</p>
+<p> - Rửa tay bằng xà phòng thường xuyên</p>
+<p> - Phát hiện sớm và đi khám khi có dấu hiệu bệnh</p>
+<p> - Giữ gìn vệ sinh môi trường</p>
+<p> - Không ăn đồ sống, ôi thiu</p>
+<p> - Biện pháp phòng chống dịch tả</p>
+<p><strong>a) Phòng bệnh cá nhân</strong></p>
+<p> - Rửa tay trước khi ăn và sau khi đi vệ sinh</p>
+<p> - Uống nước đã đun sôi</p>
+<p> - Ăn thực phẩm nấu chín kỹ</p>
+<p> - Che đậy thức ăn cẩn thận</p><p><strong>b) Phòng bệnh trong gia đình</strong></p><p> - Dọn dẹp nhà cửa sạch sẽ</p><p> - Xử lý rác đúng nơi quy định</p><p> - Dùng nhà vệ sinh hợp vệ sinh</p><p> - Không để ruồi, muỗi sinh sôi</p><p><strong>c) Phòng bệnh trong cộng đồng</strong></p><p> - Khử trùng nguồn nước</p><p> - Kiểm tra an toàn thực phẩm</p><p> - Phát hiện và cách ly người bệnh</p><p> - Tiêm vắc-xin (khi có chỉ định)</p>
+</div>
+
+<div class="box fade-left delay-9">
+<h4>Tuyên truyền phòng chống sốt xuất huyết</h4>
+<p>* Mục đích của tuyên truyền là giúp mọi người hiểu rõ nguyên nhân, tác hại và cách phòng bệnh để chủ động bảo vệ sức khỏe.Nội dung tuyên truyền gồm:</p>
+<p> - Không để nước đọng quanh nhà</p>
+<p> - Diệt lăng quăng, bọ gậy thường xuyên</p><p> - Ngủ màn, mặc quần áo dài tay</p><p> - Giữ gìn vệ sinh môi trường</p><p> - Phát hiện sớm và đi khám khi có dấu hiệu bệnh</p><p> - Biện pháp phòng chống sốt xuất huyết</p><p><strong>a) Trong gia đình</strong></p><p> - Đậy kín các dụng cụ chứa nước</p><p></p><p> - Thường xuyên thay nước bình hoa, bể cá</p><p> - Lật úp các vật dụng có thể đọng nước</p> - Thu gom rác thải đúng nơi quy định<p><strong>b) Đối với cá nhân</strong></p><p> - Ngủ màn cả ban ngày và ban đêm</p>Dùng kem, nhang xua muỗi<p> - Mặc quần áo dài tay khi ra ngoài</p><p> - Giữ cơ thể sạch sẽ</p><p><strong>c) Trong cộng đồng</strong></p><p> - Phun thuốc diệt muỗi định kỳ</p><p> - Ra quân vệ sinh môi trường</p><p> - Kiểm tra, xử lý ổ dịch kịp thời</p><p> - Phối hợp với cơ quan y tế</p>
+</div>
+</div>
+
+</section>
+
+</section>
+<footer id="footer">
+
+<div class="support-row">
+
+  <div class="support-box">
+    <h4>Thông tin liên hệ nhóm</h4>
+    <p>Email: doantruongthpttcc3@gmail.com</p>
+    <p>SĐT: 0xxx xxx xxx </p>
+    <p>Facebook: facebook.com/dtnthpttieucan</p>
+  </div>
+
+  <div class="support-box">
+    <h4>Trạm y tế tại Tiểu Cần </h4>
+    <p>- Trung tâm Y tế Tiểu Cần</p>
+    <p>- Trạm Y tế thị trấn Tiểu Cần</p>
+    <p>- Trạm Y tế xã Tập Ngãi</p>
+    <p>- Trạm Y tế xã Long Thới</p>
+  </div>
+
+  <div class="support-box">
+    <h4>Xử lý khi tiếp xúc nguồn bệnh</h4>
+    <p>- Rửa tay ngay bằng xà phòng hoặc dung dịch sát khuẩn.</p>
+    <p>- Theo dõi triệu chứng trong 7–14 ngày.</p>
+    <p>- Đến cơ sở y tế nếu có biểu hiện bất thường.</p>
+  </div>
+
+  <div class="support-box">
+    <h4>Bảo vệ bản thân nơi nguy cơ cao</h4>
+    <p>- Đeo khẩu trang đúng cách.</p>
+    <p>- Hạn chế tụ tập đông người.</p>
+    <p>- Tiêm chủng đầy đủ.</p>
+    <p>- Giữ khoảng cách an toàn.</p>
+  </div>
+
+</div>
+
+<p style="margin-top:20px;">© Chuyên đề sinh học 11 bài 9</p>
+
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+const elements = document.querySelectorAll('.fade-left');
+
+// Cho phần trên cùng chạy ngay khi load
+elements.forEach(el => {
+if(el.getBoundingClientRect().top < window.innerHeight){
+el.classList.add('show');
+}
+});
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+},{threshold:0.05});
+
+elements.forEach(el => observer.observe(el));
+
+});
+function showIntroTable(){
+const table = document.getElementById("introTable");
+table.style.display = "block";
+table.classList.add("show");
+}
+function openModal(){
+document.getElementById("introModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("introModal").style.display="none";
+}
+
+window.onclick = function(event){
+const modal = document.getElementById("introModal");
+if(event.target === modal){
+modal.style.display = "none";
+}
+}
+window.addEventListener("scroll",()=>{
+const modal = document.getElementById("introModal");
+if(modal.style.display==="flex"){
+modal.style.display="none";
+}
+});
+function toggleModal(){
+const modal = document.getElementById("introModal");
+
+if(modal.style.display === "flex"){
+modal.style.display = "none";
+}else{
+modal.style.display = "flex";
+}
+}
+const faders = document.querySelectorAll(".fade-up");
+
+window.addEventListener("scroll", ()=>{
+faders.forEach(el=>{
+const rect = el.getBoundingClientRect();
+if(rect.top < window.innerHeight - 100){
+el.classList.add("show");
+}
+});
+});
+setTimeout(function(){
+    document.querySelector(".intro-screen").style.opacity = "0";
+    document.querySelector(".intro-screen").style.transition = "1s";
+    
+    setTimeout(function(){
+        document.querySelector(".intro-screen").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+    },1000);
+
+},3500);
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const text = "Welcome to the website developed by group 6🧑‍💻";
+    const typingElement = document.getElementById("typingText");
+
+    let index = 0;
+
+    function typeEffect(){
+        if(index < text.length){
+            typingElement.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeEffect, 40);
+        }
+    }
+
+    typeEffect();
+
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const reveals = document.querySelectorAll(".scroll-reveal");
+
+    function revealOnScroll(){
+        reveals.forEach(function(element){
+            const windowHeight = window.innerHeight;
+            const elementTop = element.getBoundingClientRect().top;
+            const revealPoint = 100;
+
+            if(elementTop < windowHeight - revealPoint){
+                element.classList.add("active");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+});
+const intro = document.getElementById("intro-screen");
+
+intro.addEventListener("click", function(){
+    intro.style.opacity = "0";
+    intro.style.transition = "0.8s";
+
+    setTimeout(function(){
+        intro.style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+    },800);
+});
+
+</script>
+</body>
+</html>
